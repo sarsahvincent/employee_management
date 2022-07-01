@@ -1,22 +1,20 @@
 {
   "expo": {
-    "name": "employee_management",
-    "slug": "employee_management",
+    "name": "Algo Employee Management System",
+    "slug": "algo-employee-management-system",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "icon": "./assets/images/favpng_logo-symbol-graphic-design.png",
+    "userInterfaceStyle": "automatic",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/images/vecteezy_book-and-pencil-education-concept-illustration-for-business_8480508_607.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },

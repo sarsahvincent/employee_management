@@ -7,6 +7,7 @@ import {
   Text,
   ActivityIndicator,
   Alert,
+  TouchableWithoutFeedback,
 } from "react-native";
 import { Button } from "@rneui/themed";
 import { db } from "../firebse";
@@ -137,43 +138,44 @@ const ApplyLeaveScreen = ({ navigation }) => {
       ]);
     }
   };
-  React.useEffect(() => {
+  useEffect(() => {
     getUsers();
   }, [navigation.focus]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     create_UUID();
   }, [reason, from, to]);
 
   return (
     <View>
       <View style={{ alignItems: "center", justifyContent: "center" }}>
-        <View style={styles.MainContainer}>
-          <Text style={styles.text}>From</Text>
-          <TextInput
-            style={styles.textinput}
-            value={from}
-            placeholder="yyyy-mm-dd"
-            keyboardType="number-pad"
-            onChangeText={setFrom}
-          />
-          <Text style={styles.text}>To</Text>
-
-          <TextInput
-            onChangeText={setTo}
-            style={styles.textinput}
-            placeholder="yyyy-mm-dd"
-            keyboardType="number-pad"
-            value={to}
-          />
-          <Text style={styles.text}>Reason</Text>
-          <TextInput
-            onChangeText={setReason}
-            style={styles.textinput_reason}
-            placeholder="state reasons"
-            value={reason}
-          />
-        </View>
+        <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+          <View style={styles.MainContainer}>
+            <Text style={styles.text}>From</Text>
+            <TextInput
+              style={styles.textinput}
+              value={from}
+              placeholder="yyyy-mm-dd"
+              keyboardType="number-pad"
+              onChangeText={setFrom}
+            />
+            <Text style={styles.text}>To</Text>
+            <TextInput
+              onChangeText={setTo}
+              style={styles.textinput}
+              placeholder="yyyy-mm-dd"
+              keyboardType="number-pad"
+              value={to}
+            />
+            <Text style={styles.text}>Reason</Text>
+            <TextInput
+              onChangeText={setReason}
+              style={styles.textinput_reason}
+              placeholder="state reasons"
+              value={reason}
+            />
+          </View>
+        </TouchableWithoutFeedback>
         {loading ? (
           <ActivityIndicator size="large" color={COLORS.primary} />
         ) : (

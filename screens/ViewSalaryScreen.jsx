@@ -8,15 +8,11 @@ import {
   RefreshControl,
   Alert,
 } from "react-native";
+import { useSelector } from "react-redux";
 import Salary from "../components/Salary";
-import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
-import { db, storage } from "../firebse";
-import { useSelector, useDispatch } from "react-redux";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../firebse";
 import { collections } from "../constants/constants";
-import {
-  getAllSalaries,
-  getLogginUserDetails,
-} from "../services/redux/userSlice";
 import { COLORS } from "../constants/colors";
 
 const wait = (timeout) => {
@@ -24,16 +20,15 @@ const wait = (timeout) => {
 };
 
 const ViewSalaryScreen = () => {
-  const refreshing = false;
+  const { userId } = useSelector((state) => state.user);
 
-  const dispatch = useDispatch();
+  const refreshing = false;
   const salaryCollectiion = collection(
     db,
     collections.employee_management_salary_all
   );
   const [salaries, setSalaries] = useState([]);
   const [loading, setLoading] = useState(false);
-  const { allStaffSalaries, userId } = useSelector((state) => state.user);
 
   const getStaffSalarie = async () => {
     setLoading(true);
@@ -44,7 +39,6 @@ const ViewSalaryScreen = () => {
         id: salaryDoc.id,
       }));
 
-      // dispatch(getAllSalaries(allSa));
       let perosnalSalary = allSa?.filter(
         (salary) => salary?.id.substring(0, 28) === userId
       );

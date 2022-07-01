@@ -11,7 +11,6 @@ import {
   ActivityIndicator,
 } from "react-native";
 import { Button, Text } from "@rneui/themed";
-
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebse";
 import { useDispatch } from "react-redux";
@@ -21,7 +20,6 @@ import { getLogginStaffId } from "../services/redux/userSlice";
 
 const LoginScreen = ({ navigation }) => {
   const dispatch = useDispatch();
-
   const dimensions = Dimensions.get("window");
   const imageHeight = Math.round((dimensions.width * 10) / 16);
   const [loading, setLoadig] = useState(false);

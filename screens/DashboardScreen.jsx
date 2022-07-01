@@ -13,8 +13,6 @@ import {
   BackHandler,
   ActivityIndicator,
 } from "react-native";
-import { signOut } from "firebase/auth";
-
 import { useSelector, useDispatch } from "react-redux";
 import { collections } from "../constants/constants";
 import { AntDesign, MaterialCommunityIcons } from "@expo/vector-icons";
@@ -31,8 +29,7 @@ const DashboardScreen = ({ navigation }) => {
     db,
     collections.employee_management_users
   );
-
-  const { loggedinStaff, userId } = useSelector((state) => state.user);
+  const { userId } = useSelector((state) => state.user);
   const refreshing = false;
   const [loading, setLoading] = useState(false);
   const [logoutLoadiing, setLogoutLoading] = useState(false);

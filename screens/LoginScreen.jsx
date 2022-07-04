@@ -9,6 +9,7 @@ import {
   Keyboard,
   Alert,
   ActivityIndicator,
+  KeyboardAvoidingView,
 } from "react-native";
 import { Button, Text } from "@rneui/themed";
 import { signInWithEmailAndPassword } from "firebase/auth";
@@ -74,86 +75,95 @@ const LoginScreen = ({ navigation }) => {
   const imageWidth = dimensions.width;
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.white }}>
-      <View style={styles.login_container}>
-        <View style={styles.login_header_container}>
-          <Text
-            style={{
-              color: COLORS.primary,
-              fontWeight: "900",
-              fontSize: 24,
-            }}
-          >
-            Login To Your Account
-          </Text>
-        </View>
-        <View>
-          <Image
-            style={{ height: imageHeight, width: imageWidth }}
-            source={require("../assets/images/vecteezy_man-entering-security-password_4689193.jpg")}
-          />
-        </View>
+    <SafeAreaView
+      style={{ flex: 1, backgroundColor: COLORS.white, paddingTop: 40 }}
+    >
+      <KeyboardAvoidingView
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        style={styles.container}
+      >
         <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-          <View>
-            <View style={styles.MainContainer}>
-              <TextInput
-                style={styles.textinput}
-                value={email}
-                placeholder="Enter Your Email"
-                keyboardType="email-address"
-                onChangeText={setEmail}
-              />
-
-              <TextInput
-                onChangeText={setPassword}
-                style={styles.textinput}
-                placeholder="Enter Your Password"
-                value={password}
-                secureTextEntry
+          <View style={styles.login_container}>
+            <View style={styles.login_header_container}>
+              <Text
+                style={{
+                  color: COLORS.primary,
+                  fontWeight: "900",
+                  fontSize: 24,
+                }}
+              >
+                Account Login
+              </Text>
+            </View>
+            <View>
+              <Image
+                style={{ height: imageHeight, width: imageWidth }}
+                source={require("../assets/images/vecteezy_man-entering-security-password_4689193.jpg")}
               />
             </View>
-          </View>
-        </TouchableWithoutFeedback>
-        {loading ? (
-          <ActivityIndicator size="large" color={COLORS.primary} />
-        ) : (
-          <View
-            onPress={() => navigation.navigate("Home")}
-            style={styles.button_container}
-          >
-            <Button
-              onPress={handleSubmit}
-              title="PROFILE"
-              icon={{
-                name: "login",
-                type: "expo",
-                size: 15,
-                color: "white",
-              }}
-              iconRight
-              containerStyle={{
-                marginHorizontal: 50,
-                height: 50,
-                width: 250,
-                marginVertical: 10,
-              }}
-              titleStyle={{ fontWeight: "600" }}
-              buttonStyle={{
-                backgroundColor: COLORS.primary,
-                borderColor: "transparent",
-                borderWidth: 0,
-                borderRadius: 7,
-              }}
-            />
-            {/* <Button
+
+            <View>
+              <View style={styles.MainContainer}>
+                <TextInput
+                  style={styles.textinput}
+                  value={email}
+                  placeholder="Enter Your Email"
+                  keyboardType="email-address"
+                  onChangeText={setEmail}
+                />
+
+                <TextInput
+                  onChangeText={setPassword}
+                  style={styles.textinput}
+                  placeholder="Enter Your Password"
+                  value={password}
+                  secureTextEntry
+                />
+              </View>
+            </View>
+
+            {loading ? (
+              <ActivityIndicator size="large" color={COLORS.primary} />
+            ) : (
+              <View
+                onPress={() => navigation.navigate("Home")}
+                style={styles.button_container}
+              >
+                <Button
+                  onPress={handleSubmit}
+                  title="Login"
+                  icon={{
+                    name: "login",
+                    type: "expo",
+                    size: 15,
+                    color: "white",
+                  }}
+                  iconRight
+                  containerStyle={{
+                    marginHorizontal: 50,
+                    height: 50,
+                    width: 250,
+                    marginVertical: 10,
+                  }}
+                  titleStyle={{ fontWeight: "600" }}
+                  buttonStyle={{
+                    backgroundColor: COLORS.primary,
+                    borderColor: "transparent",
+                    borderWidth: 0,
+                    borderRadius: 7,
+                  }}
+                />
+                {/* <Button
               color={COLORS.primary}
               title="Login"
               onPress={handleSubmit}
             />
             <MaterialIcons name="login" size={34} color={COLORS.primary} /> */}
+              </View>
+            )}
           </View>
-        )}
-      </View>
+        </TouchableWithoutFeedback>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 };
@@ -161,6 +171,9 @@ const LoginScreen = ({ navigation }) => {
 export default LoginScreen;
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
   login_container: {
     flex: 1,
     display: "flex",

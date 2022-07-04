@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "Algo Employee Management System",
+    "name": "ALGO EMS",
     "slug": "algo-employee-management-system",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/favpng_logo-symbol-graphic-design.png",
+    "icon": "./assets/images/Algo Logo.png",
     "userInterfaceStyle": "automatic",
     "splash": {
       "image": "./assets/images/vecteezy_book-and-pencil-education-concept-illustration-for-business_8480508_607.png",
@@ -22,10 +22,11 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.vincentsarsah.algoemployeemanagementsystem"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/images/Algo Logo.png"
     }
   }
 }

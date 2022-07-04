@@ -4,6 +4,8 @@ import {
   StyleSheet,
   View,
   TextInput,
+  Keyboard,
+  KeyboardAvoidingView,
   Text,
   ActivityIndicator,
   Alert,
@@ -147,7 +149,10 @@ const ApplyLeaveScreen = ({ navigation }) => {
   }, [reason, from, to]);
 
   return (
-    <View>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      style={styles.container}
+    >
       <View style={{ alignItems: "center", justifyContent: "center" }}>
         <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
           <View style={styles.MainContainer}>
@@ -210,13 +215,16 @@ const ApplyLeaveScreen = ({ navigation }) => {
           </View>
         )}
       </View>
-    </View>
+    </KeyboardAvoidingView>
   );
 };
 
 export default ApplyLeaveScreen;
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
   login_container: {
     flex: 1,
     display: "flex",

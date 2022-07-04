@@ -1,7 +1,7 @@
 import * as React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { MaterialIcons } from "@expo/vector-icons";
+import { MaterialIcons, AntDesign, FontAwesome } from "@expo/vector-icons";
 import LeaveHistory from "../screens/LeaveHistory";
 import DashboardScreen from "../screens/DashboardScreen";
 import ViewSalaryScreen from "../screens/ViewSalaryScreen";
@@ -32,7 +32,7 @@ function BottomNavigator() {
         options={{
           gestureEnabled: false,
           headerShown: false,
-          tabBarLabel: "Dashboard",
+          tabBarLabel: "Profile",
           headerStyle: {
             backgroundColor: COLORS.primary,
             height: 100,
@@ -45,7 +45,7 @@ function BottomNavigator() {
           },
 
           tabBarIcon: ({ color, size }) => (
-            <MaterialIcons name="dashboard" color={color} size={size} />
+            <AntDesign name="user" color={color} size={size} />
           ),
         }}
       />
@@ -64,7 +64,7 @@ function BottomNavigator() {
             fontSize: 24,
           },
           tabBarIcon: ({ color, size }) => (
-            <MaterialIcons name="monetization-on" size={24} color={color} />
+            <FontAwesome name="dollar" size={24} color={color} />
           ),
         }}
       />
